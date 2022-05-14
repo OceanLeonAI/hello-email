@@ -1,4 +1,4 @@
-package com.leon.helloemail;
+package com.leon.hello.email;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
