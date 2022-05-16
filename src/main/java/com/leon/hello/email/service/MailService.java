@@ -1,5 +1,7 @@
 package com.leon.hello.email.service;
 
+import javax.mail.MessagingException;
+
 /**
  * @PROJECT_NAME: hello-email
  * @CLASS_NAME: MailService
@@ -11,12 +13,44 @@ package com.leon.hello.email.service;
 public interface MailService {
 
     /**
-     * 发送简单邮件
+     * 发送简单文本邮件
      *
      * @param to
      * @param subject
      * @param content
      */
-    public void sendSimpleEmail(String to, String subject, String content);
+    void sendSimpleTextEmail(String to, String subject, String content);
+
+
+    /**
+     * 发送Html邮件
+     *
+     * @param to
+     * @param subject
+     * @param content
+     */
+    void sendHtmlEmail(String to, String subject, String content) throws MessagingException;
+
+    /**
+     * 发送附件邮件
+     *
+     * @param to
+     * @param subject
+     * @param content
+     * @param filePaths
+     * @throws MessagingException
+     */
+    void sendAttachmentEmail(String to, String subject, String content, String[] filePaths) throws MessagingException;
+
+    /**
+     * 发送带图片的邮件
+     *
+     * @param to
+     * @param subject
+     * @param content
+     * @param resourcePath
+     * @param resourceId
+     */
+    void sendInlineResourceEmail(String to, String subject, String content, String resourcePath, String resourceId) throws MessagingException;
 
 }

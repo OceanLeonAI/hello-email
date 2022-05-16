@@ -2,8 +2,14 @@ package com.leon.hello.email;
 
 import com.leon.hello.email.service.MailService;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+
+import javax.mail.MessagingException;
 
 /**
  * @PROJECT_NAME: hello-email
@@ -16,20 +22,88 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class SendMailTest {
 
+    private final Logger logger = LoggerFactory.getLogger(SendMailTest.class);
+
     @Autowired
     private MailService mailService;
 
+    @Autowired
+    private TemplateEngine templateEngine;
+
 
     @Test
-    public void sendSimpleEmailTest() {
-
+    public void sendSimpleTextEmailTest() {
         String to = "945830709@qq.com";
         String subject = "邮件发送测试";
         String content = "这是一封来自126的邮件";
-        mailService.sendSimpleEmail(to, subject, content);
+        mailService.sendSimpleTextEmail(to, subject, content);
+    }
 
-        mailService.sendSimpleEmail("beyondjayfir@126.com", subject, content);
+    @Test
+    public void sendHtmlEmailTest() throws MessagingException {
+        String to = "beyondjayfir@126.com";
+        String subject = "邮件发送测试";
+        String content = "";
+        content += "<html>";
+        content += "<body>";
+        content += "<h1>";
+        content += "这是一封来自126的html邮件";
+        content += "</h1>";
+        content += "</body>";
+        content += "</html>";
+        mailService.sendHtmlEmail(to, subject, content);
+    }
 
+
+    @Test
+    public void sendAttachmentEmailTest() throws MessagingException {
+        String to = "beyondjayfir@126.com";
+        String subject = "发送附件测试";
+        String content = "";
+        content += "<html>";
+        content += "<body>";
+        content += "<h1>";
+        content += "这是一封来自126的html邮件";
+        content += "</h1>";
+        content += "</body>";
+        content += "</html>";
+        String filePath = "D:\\DevelopWorkspace\\WorkspaceForIdea\\hello-email\\src\\test\\resources\\attachment.png";
+        mailService.sendAttachmentEmail(to, subject, content, new String[]{filePath, filePath});
+    }
+
+    @Test
+    public void sendInlineResourceEmailTest() throws MessagingException {
+        String to = "beyondjayfir@126.com";
+        String subject = "发送带图片邮件测试";
+        String resourceId = "image-1";
+        String content = "";
+        content += "<html>";
+        content += "<body>";
+        content += "<h1>";
+        content += "这是有图片的邮件";
+        content += "</h1>";
+        content += "<img src='cid:" + resourceId + "'>"; // 注意标签的拼写
+        content += "</img>";
+        content += "</body>";
+        content += "</html>";
+        String filePath = "D:\\DevelopWorkspace\\WorkspaceForIdea\\hello-email\\src\\test\\resources\\attachment.png";
+
+        mailService.sendInlineResourceEmail(to, subject, content, filePath, resourceId);
+    }
+
+    @Test
+    public void sendTemplateEmailTest() throws MessagingException {
+
+        Context context = new Context();
+        context.setVariable("name", "OceanLeonAI");
+        String mailTemplate = templateEngine.process("mailTemplate", context); // 获得一个html字符串
+        logger.info("mailTemplate: {}", mailTemplate);
+
+
+        String to = "beyondjayfir@126.com";
+        String subject = "发送模板邮件测试";
+
+        mailService.sendHtmlEmail(to, subject, mailTemplate);
     }
 
 }
