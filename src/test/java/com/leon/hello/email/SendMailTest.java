@@ -34,7 +34,7 @@ public class SendMailTest {
 
     @Test
     public void sendSimpleTextEmailTest() {
-        String to = "945830709@qq.com";
+        String to = "beyondjayfir@126.com";
         String subject = "邮件发送测试";
         String content = "这是一封来自126的邮件";
         mailService.sendSimpleTextEmail(to, subject, content);
