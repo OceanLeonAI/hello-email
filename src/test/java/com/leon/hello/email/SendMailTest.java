@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
 /**
@@ -17,7 +18,7 @@ import javax.mail.MessagingException;
  * @AUTHOR: OceanLeonAI
  * @CREATED_DATE: 2022/5/14 23:35
  * @Version 1.0
- * @DESCRIPTION: TODO
+ * @DESCRIPTION: 邮件发送单元测试类
  **/
 @SpringBootTest
 public class SendMailTest {
@@ -96,7 +97,7 @@ public class SendMailTest {
 
         Context context = new Context();
         context.setVariable("name", "OceanLeonAI");
-        String mailTemplate = templateEngine.process("mailTemplate", context); // 获得一个html字符串
+        String mailTemplate = templateEngine.process("emailTemplate", context); // 获得一个html字符串,注意文件名！！！
         logger.info("mailTemplate: {}", mailTemplate);
 
 
