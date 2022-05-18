@@ -42,9 +42,9 @@
 
 **网易邮箱可以通过以下方式开启：**
 
-​    请登录网页邮箱，点击邮箱页面上方的“**设置**”，选择“**POP3/SMTP/IMAP**”，请根据实际需求开启**POP3****/IMAP**或者**SMTP****/IMAP**服务，并根据页面提示进行短信验证操作。开通后即可使用foxmail、Outlook等第三方客户端进行收发邮件。（注：点击**关闭**，既可关闭成功 
+请登录网页邮箱，点击邮箱页面上方的“**设置**”，选择“**POP3/SMTP/IMAP**”，请根据实际需求开启**POP3****/IMAP**或者**SMTP/IMAP**服务，并根据页面提示进行短信验证操作。开通后即可使用foxmail、Outlook等第三方客户端进行收发邮件。（注：点击**关闭**，既可关闭成功 
 
- ![img](http://nos.netease.com/help/ee320bb3b7b432b33bd86c5d4575ae65.jpg) 
+ ![img](hello-email.assets/ee320bb3b7b432b33bd86c5d4575ae65-1652753296789.jpg)  
 
 refer to
 
@@ -52,3 +52,22 @@ refer to
 >
 >[SpringBoot2任务之邮件、异步、定时](https://www.bilibili.com/video/BV1ye411W7nk)
 
+
+
+## Freemarker
+
+refer to
+
+> [Java FreeMarker](https://geek-docs.com/java/java-tutorial/freemarker.html)
+>
+> [freemarker+javaMailSender+springmvc实现邮件发送](https://codeantenna.com/a/G6EFzKkr27)
+
+
+
+## ZIp
+
+refer to:
+
+> [Zipping and Unzipping in Java](https://www.baeldung.com/java-compress-and-uncompress)
+>
+> [zip4j](https://github.com/srikanth-lingala/zip4j)

@@ -1,6 +1,8 @@
 package com.leon.hello.email;
 
 import com.leon.hello.email.service.MailService;
+import com.sendgrid.Request;
+import com.sendgrid.SendGrid;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,6 +106,12 @@ public class SendMailTest {
         String subject = "发送模板邮件测试";
 
         mailService.sendHtmlEmail(to, subject, mailTemplate);
+    }
+
+    @Test
+    public void sendGridTest() {
+        SendGrid sendGrid = new SendGrid("abc");
+        Request request = new Request();
     }
 
 }
